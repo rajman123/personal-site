@@ -60,7 +60,7 @@ export function Footer() {
           <div className="flex items-center gap-6">
             <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-bone-400 flex items-center gap-2">
               <span className="block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Available for select Summer '26 engagements
+              Currently available
             </span>
             <SocialIcons variant="footer" />
           </div>
