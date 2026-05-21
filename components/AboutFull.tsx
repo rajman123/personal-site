@@ -75,6 +75,11 @@ export function AboutFull() {
                 multi-agent systems that handle the kind of repetitive, judgment-light work that quietly
                 eats founders' time. Email triage. Pipeline management. Content production. Research.
                 Calendar wrangling. The stuff a smart assistant would handle if you could afford one.
+                <br /><br />
+                The honest truth: <span className="text-bone-50">if you can describe the workflow, I can probably build it.</span>{' '}
+                The ceiling on what we ship together isn't a tech limit — it's how clearly we can verbalize
+                what "good" looks like. The discovery call is mostly me asking dumb-on-purpose questions
+                until we both see the same thing. Once that's clear, the build is the easy part.
               </Section>
 
               <Section heading="The bet">
@@ -86,16 +91,33 @@ export function AboutFull() {
 
               <Section heading="How I work">
                 Discovery call → scoped pilot (usually one workflow, two-week sprint) → handoff with full
-                docs and a maintenance plan if you want one, or a clean exit if you don't. No retainer
-                lock-in, no SaaS subscription. You own the code and the agents at the end. I bill for
-                the build, not the relationship.
+                docs and a clean exit. You own the code and the agents at the end. No retainer lock-in,
+                no SaaS subscription. I bill for the build, not the relationship.
+                <br /><br />
+                <span className="text-bone-50">If you'd rather I stay involved</span> — maintaining the system as
+                your business evolves, adding new agents as new workflows show up, keeping things running
+                without you having to think about it — that's available too. You still own everything.
+                I just stick around as the engineer who knows where every wire goes.
               </Section>
 
               <Section heading="Outside the work">
-                I'm from Dubai. I read more than I should about prediction markets and factor investing.
-                I keep a running list of things that could be automated but aren't yet. I'm a worse
-                guitarist than I'd like to be, and currently making my way through every restaurant in
-                Boston worth taking my girlfriend to.
+                A few things about me beyond the work:
+                <ul className="mt-4 space-y-2.5">
+                  {[
+                    "Basketball is the constant. I've played competitively my entire life — it's the thing I default to when I need to clear my head.",
+                    "Played volleyball through high school, recently started training for muay thai, and I'll watch any UFC card you put in front of me.",
+                    "I eat Chipotle more than I'd publicly admit. Sixers ride or die.",
+                    "I keep a running list of things that could be automated but aren't yet.",
+                    "From Dubai, based in Boston, want to spend my twenties seeing as much of the rest of the world as I can.",
+                  ].map((line, i) => (
+                    <li key={i} className="flex gap-4">
+                      <span className="font-mono text-[10px] tracking-[0.25em] text-accent mt-2 shrink-0">
+                        0{i + 1}
+                      </span>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
               </Section>
 
               <div className="pt-6 lg:pt-8 border-t border-bone-300/10">

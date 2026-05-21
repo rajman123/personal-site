@@ -41,7 +41,7 @@ export function Hero() {
             className="font-mono text-xs uppercase tracking-[0.25em] text-accent mb-6 lg:mb-8"
           >
             <span className="inline-block w-8 h-px bg-accent align-middle mr-3" />
-            Available for select summer engagements
+            Currently available
           </motion.p>
 
           <motion.h1
