@@ -9,7 +9,9 @@ export type Project = {
   summary: string;
   detail: string;
   tags: string[];
-  placeholder: string; // tailwind gradient classes
+  placeholder: string; // tailwind gradient classes (used as fallback when no screenshots)
+  /** Optional showcase images under /public/screenshots/. First image is the hero. */
+  screenshots?: { src: string; alt: string; caption?: string }[];
   // Long-form content for /work deep-dive page
   longForm: {
     overview: string;
@@ -33,6 +35,9 @@ export const projects: Project[] = [
       'Built with a small team of agents — one transcribes, one researches the guest, one drafts the show page, one critiques the draft. Each agent has a narrow job and a hard contract. The orchestrator decides when to retry, when to escalate, and when to ship. In production today.',
     tags: ['Next.js', 'Claude API', 'Multi-agent', 'Production'],
     placeholder: 'from-orange-900/40 via-amber-900/30 to-rose-900/40',
+    screenshots: [
+      { src: '/screenshots/podster-landing.png', alt: 'Podster — Podcasts, faster.', caption: 'The reader UI — pick a profile, get summaries tuned to what you care about.' },
+    ],
     longForm: {
       overview:
         'Podster is a production AI tool that takes raw podcast audio and produces a publish-ready episode page in minutes — transcript, summary, clip suggestions, guest bio, and SEO metadata. It runs as a small team of specialized Claude agents coordinated by an orchestrator that knows when to retry, when to escalate, and when to ship.',
@@ -79,6 +84,11 @@ export const projects: Project[] = [
       'The dashboard surfaces tasks, drafts, and outstanding decisions. Bob runs on cron, takes initiative on idle nights (research, summaries), and routes everything through Discord. Screenshots blurred — it has my actual data in it.',
     tags: ['Next.js', 'Claude API', 'Discord bots', 'Cron', 'Multi-agent'],
     placeholder: 'from-emerald-900/40 via-teal-900/30 to-sky-900/40',
+    screenshots: [
+      { src: '/screenshots/mission-control-home.png', alt: 'Mission Control dashboard', caption: 'Dashboard — open tasks, agent workload, scheduled cron jobs, schedule. (Personal task content redacted.)' },
+      { src: '/screenshots/mission-control-calendar.png', alt: 'Mission Control calendar', caption: 'Calendar view — the time-slot grid the agent reads + writes against.' },
+      { src: '/screenshots/mission-control-deliverables.png', alt: 'Mission Control deliverables', caption: 'Deliverables — what the agent has produced, ready for human approval.' },
+    ],
     longForm: {
       overview:
         'Mission Control is a personal Next.js dashboard that surfaces everything I need to action: tasks, drafts the agent has prepared, networking follow-ups, calendar conflicts. Behind it runs Bob — an always-on agent that wakes up on cron, takes initiative on idle hours, and routes work through Discord channels organized by workflow.',
@@ -171,6 +181,11 @@ export const projects: Project[] = [
       'A multi-page Next.js editorial site with a live IG showcase that pulls her latest posts hourly, a curated discount-codes directory, and a "My Longevity Era" content page where the protocol descriptions are drafted by Claude using a voice profile distilled from her 344-caption corpus. The newsletter runs as a weekly GitHub Actions cron that drafts in her voice, posts to her newsletter platform, and learns from her edits each week.',
     tags: ['Next.js', 'TypeScript', 'Instagram Graph API', 'Voice tuning', 'Cron'],
     placeholder: 'from-rose-900/30 via-pink-900/20 to-emerald-900/40',
+    screenshots: [
+      { src: '/screenshots/mindfulbiotinker-home.png', alt: 'Mindfulbiotinker homepage', caption: 'Homepage — editorial hero, live Instagram showcase, brand-voice across the site.' },
+      { src: '/screenshots/mindfulbiotinker-longevity-era.png', alt: 'My Longevity Era page', caption: 'My Longevity Era — protocol cards drafted in her voice from the caption corpus. Blush wallpaper, alternating image/body layout.' },
+      { src: '/screenshots/mindfulbiotinker-brands.png', alt: 'Discount Codes / brand partners', caption: 'Discount Codes — data-driven brand directory. New partners ship in one data.ts edit.' },
+    ],
     longForm: {
       overview:
         'Mindfulbiotinker is a production editorial site for a wellness founder building a longevity-focused brand out of Dubai. Live at mindfulbiotinker.com. The work spans three surfaces: the marketing site itself (multi-page Next.js, custom design system, live Instagram feed), a brand-partner directory where each entry updates in a single data-file edit, and a weekly newsletter automation that drafts in her voice and learns from her edits over time.',

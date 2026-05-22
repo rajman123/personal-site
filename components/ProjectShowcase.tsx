@@ -141,27 +141,71 @@ function ProjectSection({ project, index }: { project: Project; index: number })
             </div>
           </div>
 
-          {/* Hero placeholder */}
-          <div
-            className={`relative aspect-[16/8] rounded-2xl bg-gradient-to-br ${project.placeholder} overflow-hidden mb-16 lg:mb-24 ring-1 ring-bone-300/10`}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <p className="font-mono text-[10px] tracking-[0.3em] text-bone-200/60 uppercase mb-3">
-                  Screenshot pending
-                </p>
-                <p className="font-display text-5xl lg:text-7xl text-bone-100/90">{project.title}</p>
-              </div>
+          {/* Screenshots — hero + caption grid. Falls back to gradient placeholder if none. */}
+          {project.screenshots && project.screenshots.length > 0 ? (
+            <div className="mb-16 lg:mb-24 space-y-6 lg:space-y-8">
+              {/* Hero shot */}
+              <figure className="relative aspect-[16/9] rounded-2xl overflow-hidden ring-1 ring-bone-300/10 bg-ink-800">
+                <img
+                  src={project.screenshots[0].src}
+                  alt={project.screenshots[0].alt}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  loading="lazy"
+                />
+                {project.screenshots[0].caption && (
+                  <figcaption className="absolute bottom-0 left-0 right-0 p-4 lg:p-5 bg-gradient-to-t from-ink-900/95 via-ink-900/70 to-transparent">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-bone-300/85">
+                      {project.screenshots[0].caption}
+                    </p>
+                  </figcaption>
+                )}
+              </figure>
+
+              {/* Secondary shots — 2-column grid if 2+ extras */}
+              {project.screenshots.length > 1 && (
+                <div className={`grid gap-4 lg:gap-6 ${project.screenshots.length === 2 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
+                  {project.screenshots.slice(1).map((s, i) => (
+                    <figure key={i} className="relative aspect-[16/10] rounded-xl overflow-hidden ring-1 ring-bone-300/10 bg-ink-800">
+                      <img
+                        src={s.src}
+                        alt={s.alt}
+                        className="absolute inset-0 w-full h-full object-cover object-top"
+                        loading="lazy"
+                      />
+                      {s.caption && (
+                        <figcaption className="absolute bottom-0 left-0 right-0 p-3 lg:p-4 bg-gradient-to-t from-ink-900/95 via-ink-900/70 to-transparent">
+                          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-bone-300/85">
+                            {s.caption}
+                          </p>
+                        </figcaption>
+                      )}
+                    </figure>
+                  ))}
+                </div>
+              )}
             </div>
+          ) : (
             <div
-              aria-hidden
-              className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none"
-              style={{
-                backgroundImage:
-                  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")",
-              }}
-            />
-          </div>
+              className={`relative aspect-[16/8] rounded-2xl bg-gradient-to-br ${project.placeholder} overflow-hidden mb-16 lg:mb-24 ring-1 ring-bone-300/10`}
+            >
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <p className="font-mono text-[10px] tracking-[0.3em] text-bone-200/60 uppercase mb-3">
+                    Screenshot pending
+                  </p>
+                  <p className="font-display text-5xl lg:text-7xl text-bone-100/90">{project.title}</p>
+                </div>
+              </div>
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")",
+                }}
+              />
+            </div>
+          )}
 
           {/* Metrics */}
           {project.longForm.metrics && (
