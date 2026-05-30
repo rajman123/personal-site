@@ -85,9 +85,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'Claude API', 'Discord bots', 'Cron', 'Multi-agent'],
     placeholder: 'from-emerald-900/40 via-teal-900/30 to-sky-900/40',
     screenshots: [
-      { src: '/screenshots/mission-control-home.png', alt: 'Mission Control dashboard', caption: 'Dashboard — open tasks, agent workload, scheduled cron jobs, schedule. (Personal task content redacted.)' },
-      { src: '/screenshots/mission-control-calendar.png', alt: 'Mission Control calendar', caption: 'Calendar view — the time-slot grid the agent reads + writes against.' },
-      { src: '/screenshots/mission-control-deliverables.png', alt: 'Mission Control deliverables', caption: 'Deliverables — what the agent has produced, ready for human approval.' },
+      { src: '/screenshots/multi-automation-stack.png', alt: 'Discord channel-per-agent architecture', caption: 'Each Discord channel = a specialized agent. One channel runs the WhatsApp broker bot, one ghost-writes the monthly newsletter, one delivers the 4:15pm ET market close brief, one handles WM recruiting. All orchestrated from a single VPS via webhooks + cron + PM2 — each agent with its own memory, prompts, and execution context.' },
     ],
     longForm: {
       overview:
