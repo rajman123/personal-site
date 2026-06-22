@@ -95,7 +95,7 @@ export function ProjectCarousel() {
         style={{ scrollSnapType: 'x mandatory' }}
       >
         <div className="flex gap-6 lg:gap-8 px-6 lg:px-12 pl-6 lg:pl-12 max-w-[calc(100vw)] [&>*:last-child]:mr-6 lg:[&>*:last-child]:mr-12">
-          {projects.map((p, i) => (
+          {projects.slice(0, 4).map((p, i) => (
             <CarouselCard key={p.slug} project={p} index={i} />
           ))}
           <Link

@@ -1,19 +1,11 @@
 import { Hero } from '@/components/Hero';
-import { ProjectCarousel } from '@/components/ProjectCarousel';
-import { AboutTeaser } from '@/components/AboutTeaser';
-import { ContactTeaser } from '@/components/ContactTeaser';
+import { Sections } from '@/components/Sections';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <ProjectCarousel />
-      <AboutTeaser />
-      <ContactTeaser />
+      <Sections />
     </>
   );
 }
-
-export const metadata = {
-  title: 'Rajveer Gehani — AI agents that run real workflows',
-};

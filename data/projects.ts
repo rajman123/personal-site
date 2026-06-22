@@ -5,6 +5,8 @@ export type Project = {
   title: string;
   client: string;
   year: string;
+  /** ISO date (YYYY-MM-DD) used to sort projects newest → oldest. */
+  date: string;
   status: ProjectStatus;
   summary: string;
   detail: string;
@@ -22,19 +24,20 @@ export type Project = {
   };
 };
 
-export const projects: Project[] = [
+const projectsRaw: Project[] = [
   {
     slug: 'podster',
     title: 'Podster',
     client: 'Production AI podcast tooling',
-    year: '2026',
+    year: '2025',
+    date: '2025-09-15',
     status: 'live',
     summary:
       'Multi-agent system that turns long-form audio into publish-ready episode pages, transcripts, and clip suggestions.',
     detail:
       'Built with a small team of agents — one transcribes, one researches the guest, one drafts the show page, one critiques the draft. Each agent has a narrow job and a hard contract. The orchestrator decides when to retry, when to escalate, and when to ship. In production today.',
     tags: ['Next.js', 'Claude API', 'Multi-agent', 'Production'],
-    placeholder: 'from-orange-900/40 via-amber-900/30 to-rose-900/40',
+    placeholder: 'from-orange-300/50 via-amber-200/40 to-rose-200/50',
     screenshots: [
       { src: '/screenshots/podster-landing.png', alt: 'Podster — Podcasts, faster.', caption: 'The reader UI — pick a profile, get summaries tuned to what you care about.' },
     ],
@@ -77,13 +80,14 @@ export const projects: Project[] = [
     title: 'Mission Control + Bob',
     client: 'Personal autonomous AI system',
     year: '2026',
-    status: 'ongoing',
+    date: '2026-04-20',
+    status: 'live',
     summary:
       'A live dashboard and 24/7 agent ("Bob") that runs my calendar, networking pipeline, and morning briefings end-to-end.',
     detail:
       'The dashboard surfaces tasks, drafts, and outstanding decisions. Bob runs on cron, takes initiative on idle nights (research, summaries), and routes everything through Discord. Screenshots blurred — it has my actual data in it.',
     tags: ['Next.js', 'Claude API', 'Discord bots', 'Cron', 'Multi-agent'],
-    placeholder: 'from-emerald-900/40 via-teal-900/30 to-sky-900/40',
+    placeholder: 'from-emerald-200/50 via-teal-200/40 to-sky-200/50',
     screenshots: [
       { src: '/screenshots/multi-automation-stack.png', alt: 'Discord channel-per-agent architecture', caption: 'Each Discord channel = a specialized agent. One channel runs the WhatsApp broker bot, one ghost-writes the monthly newsletter, one delivers the 4:15pm ET market close brief, one handles WM recruiting. All orchestrated from a single VPS via webhooks + cron + PM2 — each agent with its own memory, prompts, and execution context.' },
     ],
@@ -111,7 +115,7 @@ export const projects: Project[] = [
       ],
       metrics: [
         { label: 'Cron jobs running', value: '12+' },
-        { label: 'Discord channels', value: '4 workflow + DMs' },
+        { label: 'Discord channels', value: 'workflow + DMs' },
         { label: 'Status', value: 'Ongoing daily-driver' },
       ],
       techStack: [
@@ -126,13 +130,14 @@ export const projects: Project[] = [
     title: 'Multi-agent automation stack',
     client: 'Founder workflow toolkit',
     year: '2026',
+    date: '2026-04-10',
     status: 'live',
     summary:
       'Modular Python stack — morning email routine, executor cron, Discord-driven workflows. Drop-in for solo founders.',
     detail:
       'Workflow-per-channel routing, an executor that picks up tasks from a queue and runs them with full context, retry/checkpoint semantics, and a tick loop that schedules itself. Designed so a non-engineer can read what it did and why.',
     tags: ['Python', 'Claude API', 'Discord', 'Automation'],
-    placeholder: 'from-violet-900/40 via-fuchsia-900/30 to-pink-900/40',
+    placeholder: 'from-violet-200/50 via-fuchsia-200/40 to-pink-200/50',
     longForm: {
       overview:
         'The automation stack is the Python plumbing that powers Mission Control + Bob, packaged so the patterns can be lifted into other founders\' workflows. Daily morning recap, weekly summary, networking ping reviews, and ad-hoc task execution all run on the same primitives.',
@@ -168,17 +173,181 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: 'regtech-monitor',
+    title: 'Horizon Scanner',
+    client: 'Regulatory horizon-scanning platform for a GCC fintech',
+    year: '2026',
+    date: '2026-06-05',
+    status: 'ongoing',
+    summary:
+      'A live horizon-scanning engine that automatically catches every new and amended regulation the moment it is published — across 25+ GCC supervisors, central banks, exchanges, and global standards bodies — and classifies what actually matters.',
+    detail:
+      'A horizon-scanning system that compiles and monitors financial regulations from dozens of official sources across the Gulf and global hub cities. Every feed is live-verified; bot-protected sources are reached with a headless-browser fetch pipeline instead of brittle RSS.',
+    tags: ['Python', 'Playwright', 'Web scraping', 'APIs', 'Next.js'],
+    placeholder: 'from-sky-200/50 via-indigo-200/40 to-slate-200/50',
+    longForm: {
+      overview:
+        'A regulatory-change monitoring platform for a GCC fintech. The brief: give a compliance team a single, trustworthy view of new and amended financial regulations across the Gulf plus a dozen international hub cities — pulling from supervisors, financial-intelligence units, ministries, exchanges, and official law platforms.',
+      architecture:
+        'A verification-first ingestion pipeline. Each regulator source is mapped to a live-verified feed — API, SPARQL endpoint, or document page — and classified by how it can be harvested. Where RSS exists and works, it is used; where sources sit behind bot protection (the common case in this region), a Playwright headless-browser fetch bypasses the 403s. A proof-of-concept auto-generated 184 in-force laws from one jurisdiction’s public legal API directly into the client’s sheet format.',
+      decisions: [
+        {
+          title: 'Live-verify every single source link',
+          body:
+            'For a compliance product, a stale or wrong link is worse than no link. Every regulator feed in the deliverable was opened and confirmed live before it shipped — no inferring a URL from a pattern.',
+        },
+        {
+          title: 'Playwright fetch over RSS where needed',
+          body:
+            'Regional regulator sites are heavily bot-protected and their RSS is mostly empty or blocked. A headless-browser fetch became the validated workhorse — it sees what a human browser sees, so the feed actually populates.',
+        },
+        {
+          title: 'Hand the client an adaptation playbook, not a black box',
+          body:
+            'Alongside the feeds I shipped an initial-build playbook, a tech-team adaptation guide with tested API/SPARQL queries per jurisdiction, and a manual-collection map of verified document pages — so their engineers can extend it without me.',
+        },
+      ],
+      metrics: [
+        { label: 'Regulator sources mapped', value: '100+' },
+        { label: 'Jurisdictions', value: '13+' },
+        { label: 'PoC laws auto-generated', value: '184' },
+      ],
+      techStack: [
+        { category: 'Ingestion', items: ['Python', 'Playwright', 'REST + SPARQL'] },
+        { category: 'Verification', items: ['Live link checks', 'Source classification'] },
+        { category: 'Surface', items: ['Next.js', 'Google Sheets export', 'CSV'] },
+      ],
+    },
+  },
+  {
+    slug: 'wealth-report-automation',
+    title: 'Strategy & Meeting Report Automation',
+    client: 'Automated reporting for a London wealth-management practice',
+    year: '2026',
+    date: '2026-06-12',
+    status: 'ongoing',
+    summary:
+      'Composes a wealth-management practice’s strategy proposals and post-meeting review decks straight from client documents — a pre-meeting plan before the conversation and a meeting report after.',
+    detail:
+      'Reads a client’s underlying documents and auto-composes presentation-ready PowerPoint decks: a pre-meeting proposal and a post-meeting annual-review pack, built off the practice’s real template with charts rendered as images.',
+    tags: ['Python', 'python-pptx', 'Claude API', 'Document parsing'],
+    placeholder: 'from-amber-200/50 via-stone-200/40 to-emerald-200/50',
+    longForm: {
+      overview:
+        'Report-generation automation for a London wealth-advisory practice. Advisers spend hours hand-building client decks; this composes them automatically from the client’s own documents — a PRE proposal deck before the meeting and a POST annual-review deck after — formatted to the practice’s house template.',
+      architecture:
+        'A document-to-deck pipeline. Client source documents are parsed and structured, the relevant figures and narrative are drafted with Claude, and the output is assembled into a .pptx built off the practice’s real template. Charts are rendered as images and placed into the slides so formatting stays pixel-stable across machines.',
+      decisions: [
+        {
+          title: 'Build off the real template, not a clone',
+          body:
+            'The deck has to look like theirs, not "close enough". The generator writes into the practice’s actual .pptx template so brand, fonts, and layout match what advisers already send clients.',
+        },
+        {
+          title: 'Charts as images, not native chart objects',
+          body:
+            'Native PowerPoint charts drift and break across versions. Rendering each chart to an image and placing it keeps every generated deck visually identical and predictable.',
+        },
+        {
+          title: 'Surface document conflicts instead of guessing',
+          body:
+            'When source documents disagree, the system flags the conflict for the adviser rather than silently picking a number — the adviser stays accountable for what the client sees.',
+        },
+      ],
+      techStack: [
+        { category: 'Generation', items: ['Python', 'python-pptx', 'Claude API'] },
+        { category: 'Inputs', items: ['Document parsing', 'Template binding'] },
+        { category: 'Output', items: ['PPTX', 'Chart-as-image rendering'] },
+      ],
+    },
+  },
+  {
+    slug: 'structured-product-analytics',
+    title: 'Structured-product analytics',
+    client: 'Structured-product & portfolio analytics tooling for an investment firm',
+    year: '2026',
+    date: '2026-01-20',
+    status: 'live',
+    summary:
+      'Structured-product and portfolio analytics tooling for an investment firm — tracks structured products and validates derived metrics against the actual term sheets.',
+    detail:
+      'A suite of trackers for structured products and accumulators plus an intelligence hub, with a hard rule that every field semantic and derived metric is cross-checked against the underlying term sheet rather than inferred from the database.',
+    tags: ['Python', 'Financial analysis', 'Data validation'],
+    placeholder: 'from-slate-200/50 via-blue-200/40 to-cyan-200/50',
+    longForm: {
+      overview:
+        'Analytics tooling for an investment firm covering structured products and accumulators, plus a shared intelligence hub. The work centers on getting the numbers provably right — tracking positions and surfacing the derived metrics an advisor needs, validated against source documents.',
+      architecture:
+        'A typed data layer feeds product trackers and the intelligence hub. The defining principle is validation-against-source: rather than trusting whatever value sits in the database, each field label and derived metric is cross-checked against the actual term sheet (the product’s offering/KIID document) before it is shown or shipped.',
+      decisions: [
+        {
+          title: 'Validate against the term sheet, never the database alone',
+          body:
+            'Database values can be mislabeled or stale. Every structured-product field semantic and computed metric is reconciled against the underlying term sheet, so a wrong assumption gets caught before it reaches a client view.',
+        },
+        {
+          title: 'Separate trackers, shared data contracts',
+          body:
+            'Structured products and accumulators have different lifecycles, so they get their own trackers — but both speak the same typed data contracts, which keeps the intelligence hub consistent across product types.',
+        },
+      ],
+      techStack: [
+        { category: 'Analytics', items: ['Python', 'Pandas', 'Financial math'] },
+        { category: 'Integrity', items: ['Term-sheet validation', 'Typed schemas'] },
+        { category: 'Surface', items: ['Trackers', 'Intelligence hub'] },
+      ],
+    },
+  },
+  {
+    slug: 'whatsapp-broker-bot',
+    title: 'WhatsApp broker assistant',
+    client: 'AI WhatsApp assistant for Dubai real-estate brokers',
+    year: '2026',
+    date: '2026-02-15',
+    status: 'live',
+    summary:
+      'Multi-tenant AI WhatsApp assistant for Dubai real-estate brokers — onboarding, lead handling, and DM campaigns, one broker per number.',
+    detail:
+      'A WhatsApp-native assistant built on Twilio that identifies each broker by their phone number, onboards them through a questionnaire, and runs DM campaigns — productized as a multi-tenant side business.',
+    tags: ['Python', 'Twilio', 'WhatsApp', 'Claude API', 'Multi-tenant'],
+    placeholder: 'from-green-200/50 via-lime-200/40 to-emerald-200/50',
+    longForm: {
+      overview:
+        'A WhatsApp assistant for Dubai real-estate brokers — my own side business. Brokers live in WhatsApp, so the product meets them there: it onboards a broker through a questionnaire, then helps handle leads and run outbound DM campaigns, all from their existing number.',
+      architecture:
+        'A multi-tenant Twilio + WhatsApp service. Each broker is identified by the Twilio number they message through, so one deployment serves many brokers with isolated context. An onboarding questionnaire captures each broker’s profile, and a campaign system drives outbound DMs. Claude handles the conversational layer.',
+      decisions: [
+        {
+          title: 'Broker identity = Twilio number',
+          body:
+            'Keying each tenant off the inbound Twilio number means no login, no app install — the broker just texts, and the system already knows who they are and which context to load.',
+        },
+        {
+          title: 'Onboarding questionnaire before automation',
+          body:
+            'The bot is only as good as what it knows about the broker. A structured onboarding pass collects that up front, so every later message and campaign is grounded in the broker’s actual listings and style.',
+        },
+      ],
+      techStack: [
+        { category: 'Messaging', items: ['Twilio', 'WhatsApp Business'] },
+        { category: 'Brain', items: ['Claude API', 'Per-tenant context'] },
+        { category: 'Runtime', items: ['Python', 'VPS', 'PM2'] },
+      ],
+    },
+  },
+  {
     slug: 'mindfulbiotinker',
     title: 'Mindfulbiotinker',
     client: 'Editorial brand site + AI-tuned content engine',
-    year: '2026',
+    year: '2025',
+    date: '2025-11-10',
     status: 'live',
     summary:
       'Brand site for a wellness founder, with a live Instagram feed, drafted protocol pages in her voice, and a brand-partner directory that updates in one data-file edit.',
     detail:
       'A multi-page Next.js editorial site with a live IG showcase that pulls her latest posts hourly, a curated discount-codes directory, and a "My Longevity Era" content page where the protocol descriptions are drafted by Claude using a voice profile distilled from her 344-caption corpus. The newsletter runs as a weekly GitHub Actions cron that drafts in her voice, posts to her newsletter platform, and learns from her edits each week.',
     tags: ['Next.js', 'TypeScript', 'Instagram Graph API', 'Voice tuning', 'Cron'],
-    placeholder: 'from-rose-900/30 via-pink-900/20 to-emerald-900/40',
+    placeholder: 'from-rose-200/50 via-pink-200/40 to-emerald-200/50',
     screenshots: [
       { src: '/screenshots/mindfulbiotinker-home.png', alt: 'Mindfulbiotinker homepage', caption: 'Homepage — editorial hero, live Instagram showcase, brand-voice across the site.' },
       { src: '/screenshots/mindfulbiotinker-longevity-era.png', alt: 'My Longevity Era page', caption: 'My Longevity Era — protocol cards drafted in her voice from the caption corpus. Blush wallpaper, alternating image/body layout.' },
@@ -221,3 +390,19 @@ export const projects: Project[] = [
     },
   },
 ];
+
+/** Canonical project order used everywhere (home + /work).
+ *  Client work leads, newest → oldest by `date`; the two personal tooling
+ *  builds (automation stack + Mission Control / Bob) are pinned to the bottom,
+ *  just below Podster. */
+const BOTTOM_PINNED = ['automation-stack', 'mission-control'];
+export const projects: Project[] = [...projectsRaw]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .sort((a, b) => {
+    const ai = BOTTOM_PINNED.indexOf(a.slug);
+    const bi = BOTTOM_PINNED.indexOf(b.slug);
+    if (ai === -1 && bi === -1) return 0; // both unpinned → keep date order
+    if (ai === -1) return -1; // a stays above pinned b
+    if (bi === -1) return 1; // b stays above pinned a
+    return ai - bi; // both pinned → BOTTOM_PINNED order
+  });

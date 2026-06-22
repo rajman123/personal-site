@@ -2,14 +2,14 @@ import type { ProjectStatus } from '@/data/projects';
 
 const styles: Record<ProjectStatus, { dot: string; label: string; tone: string }> = {
   ongoing: {
-    dot: 'bg-amber-400 shadow-[0_0_12px] shadow-amber-400/60 animate-pulse',
+    dot: 'bg-amber-500 shadow-[0_0_12px] shadow-amber-500/50 animate-pulse',
     label: 'Ongoing',
-    tone: 'text-amber-200',
+    tone: 'text-amber-700',
   },
   live: {
-    dot: 'bg-emerald-400 shadow-[0_0_12px] shadow-emerald-400/60 animate-pulse',
+    dot: 'bg-emerald-500 shadow-[0_0_12px] shadow-emerald-500/50 animate-pulse',
     label: 'Live',
-    tone: 'text-emerald-200',
+    tone: 'text-emerald-700',
   },
   completed: {
     dot: 'bg-bone-300',

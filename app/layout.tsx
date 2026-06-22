@@ -1,18 +1,10 @@
 import type { Metadata } from 'next';
-import { Instrument_Serif, Manrope, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import { Nav } from '@/components/Nav';
-import { Footer } from '@/components/Footer';
+import { TopBar } from '@/components/TopBar';
+import { CommandPalette } from '@/components/CommandPalette';
 
-const display = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  style: ['normal', 'italic'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const sans = Manrope({
+const sans = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-sans',
@@ -27,27 +19,23 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Rajveer Gehani — AI agents that run real workflows',
+  title: 'Rajveer Gehani — Finance + CS · AI systems for real clients',
   description:
-    'Rajveer Gehani builds AI agents that take repetitive work off founders\' plates. BC \'28, Finance + CS. Boston / Dubai.',
+    'Rajveer Gehani — Boston College, Finance + CS. I build and deploy AI systems for real clients. Boston / Dubai.',
   openGraph: {
     title: 'Rajveer Gehani',
-    description: 'AI agents that run real workflows.',
+    description: 'Finance + CS. I build and deploy AI systems for real clients.',
     type: 'website',
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${sans.variable} ${mono.variable}`}
-      data-accent="amber"
-    >
-      <body className="font-sans antialiased grain">
-        <Nav />
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+      <body className="font-sans antialiased">
+        <TopBar />
         <main>{children}</main>
-        <Footer />
+        <CommandPalette />
       </body>
     </html>
   );

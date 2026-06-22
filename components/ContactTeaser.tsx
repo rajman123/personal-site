@@ -29,7 +29,7 @@ export function ContactTeaser() {
           <div className="lg:col-span-4 lg:pb-4 flex flex-col items-start gap-5">
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-3 bg-accent text-ink-900 font-medium px-7 py-4 rounded-full overflow-hidden transition-transform duration-500 hover:scale-[1.02]"
+              className="group inline-flex items-center gap-3 bg-accent text-bone-50 font-medium px-7 py-4 rounded-full overflow-hidden transition-transform duration-500 hover:scale-[1.02]"
             >
               <span>Book a call</span>
               <svg

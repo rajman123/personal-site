@@ -78,7 +78,7 @@ export function ContactFull() {
                   </a>
                 </div>
                 <iframe
-                  src="https://calendly.com/rajveergehani/intro-call?hide_gdpr_banner=1&background_color=13110f&text_color=faf8f4&primary_color=d97706"
+                  src="https://calendly.com/rajveergehani/intro-call?hide_gdpr_banner=1&background_color=f7f6f2&text_color=1a1613&primary_color=d97706"
                   title="Schedule a call with Rajveer"
                   width="100%"
                   height="780"
@@ -117,7 +117,7 @@ export function ContactFull() {
                     <button
                       type="submit"
                       disabled={state === 'submitting' || state === 'sent'}
-                      className="bg-accent text-ink-900 font-medium rounded-full px-5 py-3 hover:scale-[1.02] active:scale-[0.99] transition-transform duration-300 disabled:opacity-60"
+                      className="bg-accent text-bone-50 font-medium rounded-full px-5 py-3 hover:scale-[1.02] active:scale-[0.99] transition-transform duration-300 disabled:opacity-60"
                     >
                       {state === 'submitting'
                         ? 'Sending…'
@@ -133,14 +133,14 @@ export function ContactFull() {
                 <div className="space-y-3 pt-8 border-t border-bone-300/10">
                   <ContactLine
                     label="Email"
-                    value="rajveer@rajveergehani.com"
-                    href="mailto:rajveer@rajveergehani.com"
+                    value="gehani@bc.edu"
+                    href="mailto:gehani@bc.edu"
                   />
                   <ContactLine label="GitHub" value="@rajman123" href="https://github.com/rajman123" />
                   <ContactLine
                     label="LinkedIn"
-                    value="rajveergehani"
-                    href="https://linkedin.com/in/rajveergehani"
+                    value="rajveer-gehani"
+                    href="https://linkedin.com/in/rajveer-gehani"
                   />
                 </div>
 

@@ -14,9 +14,9 @@ export function Footer() {
               Rajveer <span className="display-italic text-accent">Gehani</span>
             </Link>
             <p className="text-bone-300 text-sm max-w-sm leading-relaxed">
-              I build AI agents that run real workflows. Boston / Dubai. Currently shipping{' '}
+              I build AI agents that run real workflows. Boston / Dubai. See what I'm{' '}
               <Link href="/work" className="text-accent hover:underline">
-                three projects
+                currently shipping
               </Link>
               .
             </p>
@@ -39,9 +39,9 @@ export function Footer() {
               Find me
             </p>
             <ul className="space-y-2.5 text-sm">
-              <FooterLink href="mailto:rajveer@rajveergehani.com" label="Email" external />
+              <FooterLink href="mailto:gehani@bc.edu" label="Email" external />
               <FooterLink href="https://github.com/rajman123" label="GitHub" external />
-              <FooterLink href="https://linkedin.com/in/rajveergehani" label="LinkedIn" external />
+              <FooterLink href="https://linkedin.com/in/rajveer-gehani" label="LinkedIn" external />
               <FooterLink
                 href="https://calendly.com/rajveergehani/intro-call"
                 label="Book a call"

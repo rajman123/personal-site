@@ -80,7 +80,7 @@ export function Nav() {
 
           <Link
             href="/contact"
-            className="font-mono text-xs uppercase tracking-widest border border-bone-300/30 text-bone-50 px-4 py-2 rounded-full hover:bg-accent hover:border-accent hover:text-ink-900 transition-all duration-400"
+            className="font-mono text-xs uppercase tracking-widest border border-bone-300/30 text-bone-50 px-4 py-2 rounded-full hover:bg-accent hover:border-accent hover:text-bone-50 transition-all duration-400"
           >
             Book a call
           </Link>
@@ -132,7 +132,7 @@ export function Nav() {
               <li>
                 <Link
                   href="/contact"
-                  className="inline-block mt-2 font-mono text-xs uppercase tracking-widest bg-accent text-ink-900 px-5 py-3 rounded-full"
+                  className="inline-block mt-2 font-mono text-xs uppercase tracking-widest bg-accent text-bone-50 px-5 py-3 rounded-full"
                 >
                   Book a call →
                 </Link>

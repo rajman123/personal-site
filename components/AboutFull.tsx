@@ -123,7 +123,7 @@ export function AboutFull() {
               <div className="pt-6 lg:pt-8 border-t border-bone-300/10">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-3 bg-accent text-ink-900 font-medium px-7 py-4 rounded-full transition-transform duration-500 hover:scale-[1.02]"
+                  className="group inline-flex items-center gap-3 bg-accent text-bone-50 font-medium px-7 py-4 rounded-full transition-transform duration-500 hover:scale-[1.02]"
                 >
                   <span>Book a call</span>
                   <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
