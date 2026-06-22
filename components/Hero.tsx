@@ -7,7 +7,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 // next/image's optimizer needs `sharp` (absent in this env) and its `unoptimized`
 // path drops the configured basePath. A plain <img> with the basePath prefix is
 // the robust, deploy-safe way to serve this transparent cutout.
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '/site';
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 export function Hero() {
   return (
