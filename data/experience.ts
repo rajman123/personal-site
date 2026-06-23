@@ -25,7 +25,7 @@ export const EXPERIENCE: Experience[] = [
     bullets: ['Incoming summer intern at a multi-family private wealth management firm.'],
   },
   {
-    role: 'Quantitative Developer',
+    role: 'Intern',
     org: 'Vantage Capital',
     location: 'Dubai, UAE',
     dates: 'Jun 2025 · Dec 2025–Jan 2026 · May–Aug 2026',
