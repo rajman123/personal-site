@@ -26,6 +26,114 @@ export type Project = {
 
 const projectsRaw: Project[] = [
   {
+    slug: 'ai-assistant-package',
+    title: 'Personal 24/7 AI Assistant Setup Package',
+    client: 'Productized private AI agent + command centre for clients',
+    year: '2026',
+    date: '2026-06-25',
+    status: 'ongoing',
+    summary:
+      'Gives a client their own private, always-on AI chief-of-staff plus a live command-centre dashboard — it answers emails, books and arranges things, and keeps them on top of every business they run, all on infrastructure they own.',
+    detail:
+      'A productized personal AI operations partner. It works like a human executive assistant — drafting and answering emails, booking meetings and travel, chasing follow-ups, and delivering a daily brief — backed by a Mission Control dashboard that gives one view across everything the client owns or runs. For each client I build bespoke tools tailored to the specific parts of their life and business, seed the agent from their own documents, deploy it to their own server and Claude subscription, and hand it over built to run itself.',
+    tags: ['Next.js', 'Claude API', 'Multi-agent', 'Custom tooling', 'VPS deployment', 'Client handoff'],
+    placeholder: 'from-emerald-200/50 via-sky-200/40 to-indigo-200/50',
+    longForm: {
+      overview:
+        'A packaged “personal AI chief-of-staff” for executives and founders stretched across too many things at once. Each client gets a private, always-on agent plus a Mission Control dashboard tailored to their world — every business line, meeting, and metric they care about — running on infrastructure they own, so their data never leaves their server. It is the same 24/7 system I run for myself, productized so a busy operator can offload the overhead and stay on top of everything, everywhere, at once.',
+      architecture:
+        'A repeatable build with a bespoke layer per client. The Mission Control template (a self-contained dashboard + agent runtime) is cloned and shaped to the client: dashboard tabs and data model their actual businesses, and the agent’s memory is seeded from their own documents (CV, company profile) so it boots already knowing who they are and how they work. On top of that base I build custom tools for the specific friction points in each client’s life — a holdings cockpit for a diversified investor, a daily operations digest for an operating company, a meetings-and-travel coordinator — then deploy the whole thing to the client’s own VPS and Claude subscription behind a reverse proxy, with self-healing crons and a health monitor that alerts them the moment anything needs a look.',
+      decisions: [
+        {
+          title: 'Works like a human assistant, not a chatbot',
+          body:
+            'The agent doesn’t wait to be asked. It drafts and answers emails, books and rearranges meetings, coordinates travel and logistics, chases the follow-ups that fall through the cracks, and pushes a morning brief — with a draft-and-confirm guardrail on anything it sends, so the client stays in control while the day-to-day overhead simply disappears.',
+        },
+        {
+          title: 'A custom toolset per client, not a template',
+          body:
+            'Every client’s life has different friction. So on top of the shared base I build tools tailored to their world — a cockpit tile per business they own, a daily data digest for their operating company, a networking and follow-up tracker, a document-to-brief pipeline — the pieces that actually move the needle for that specific person.',
+        },
+        {
+          title: 'Runs on the client’s own infrastructure',
+          body:
+            'Their VPS, their Claude subscription. The agent’s data — especially sensitive business or health data — never leaves their server. For the executives this is built for, that data sovereignty is the selling point, not a footnote.',
+        },
+        {
+          title: 'Low-maintenance by design',
+          body:
+            'Self-healing crons plus a health monitor that alerts the client on failure — never a silent one — and a maintenance guide so they’re self-sufficient after handoff. The whole point is that it keeps running, and keeps them on top of everything, without me.',
+        },
+      ],
+      metrics: [
+        { label: 'Runs on', value: 'Client’s own VPS + Claude' },
+        { label: 'Onboarding', value: 'Seeded from client docs' },
+        { label: 'Custom tools', value: 'Built per client’s life' },
+        { label: 'After handoff', value: 'Low-maintenance, self-healing' },
+      ],
+      techStack: [
+        { category: 'Dashboard', items: ['Next.js', 'Express', 'JSON-file storage'] },
+        { category: 'Assistant', items: ['Claude API', 'Email + calendar', 'Memory files', 'Cron'] },
+        { category: 'Custom tooling', items: ['Per-client tools', 'Data digests', 'Travel + meeting coordination'] },
+        { category: 'Infra', items: ['Client VPS', 'pm2 + nginx', 'Health monitor'] },
+      ],
+    },
+  },
+  {
+    slug: 'creator-growth-analytics',
+    title: 'Creator Growth Analytics',
+    client: 'Data-driven growth analytics & ideation agents for a roster of creators',
+    year: '2026',
+    date: '2026-07-05',
+    status: 'live',
+    summary:
+      'A data-driven growth engine for creators: full analytics audits that score every post with a predictive “Brain Score,” plus always-on ideation agents that run hours of daily trend research and turn it into ready-to-shoot post ideas.',
+    detail:
+      'Runs full, data-driven audits of a creator’s account — scoring every post with a model trained on their own results — and pairs them with ideation agents that do hours of automated market research every day, then act as a chatbot surfacing content ideas tuned to trends changing daily. The creator can converse with it to turn a live trend into a specific, ready-to-shoot post. Built as a productized service now scaling across a roster of creator clients.',
+    tags: ['Python', 'Predictive analytics', 'Instagram', 'Ideation agents', 'Trend research', 'Computer vision'],
+    placeholder: 'from-fuchsia-200/50 via-rose-200/40 to-amber-200/50',
+    longForm: {
+      overview:
+        'A productized, data-driven growth service for social-media creators, now scaling across a roster of clients. Two engines: full analytics audits that turn a creator’s own platform data into a decision-ready report — what’s working, why, and what to make next — and always-on ideation agents that research the market every day and hand the creator fresh, on-trend ideas on demand. Everything is grounded in the creator’s real numbers, not generic advice.',
+      architecture:
+        'Two systems sharing one data spine. The audit pipeline runs collect → score → see → report: the heart is a predictive “Brain Score,” a per-post model whose weights are learned from the creator’s own posts (which content traits lift their follows), so it grades what a post achieved and predicts how a draft will do before it goes live — while a visual stage frame-samples Reel recordings to read the first-frame and on-screen-text hooks that drive reach. Alongside it, ideation agents run hours of automated market and trend research daily across platforms, synthesize what’s breaking out, and expose it as a chatbot the creator can talk to — turning a live trend into a specific post concept, hook, and caption in a back-and-forth. A trend radar flags the moment a relevant format or sound starts breaking, with a ready-to-shoot brief attached.',
+      decisions: [
+        {
+          title: 'Score the recipe, not just the outcome',
+          body:
+            'The Brain Score predicts from the content traits a creator controls — format, hook, a save/send call-to-action, caption style — validated against their real follows. So a creator can score a draft before posting, not just grade it afterward.',
+        },
+        {
+          title: 'An ideation partner that never runs out of ideas',
+          body:
+            'The ideation agents do hours of trend research every day so the creator doesn’t have to. Instead of a static content calendar, the creator converses with the agent — “what should I post about this week?” — and walks away with specific, on-trend concepts built around what’s actually breaking out right now.',
+        },
+        {
+          title: 'Calibrate to the creator’s own data',
+          body:
+            'Every benchmark is learned from their account, never an industry average. That surfaces the most valuable finding: the gap between who a creator thinks they reach and who actually engages — and which of their content types quietly out-performs the rest.',
+        },
+        {
+          title: 'Never fabricate a figure',
+          body:
+            'Every number in the report is the creator’s real data. Where a metric can’t be sourced cleanly it’s flagged, not guessed — because a wrong number in a paid deliverable is worse than a missing one.',
+        },
+      ],
+      metrics: [
+        { label: 'Posts scored per audit', value: '~100' },
+        { label: 'Ideation research', value: 'Hours, daily, automated' },
+        { label: 'Brain Score', value: 'Trained on creator’s own data' },
+        { label: 'Deliverable', value: 'Audit + live ideation chatbot' },
+      ],
+      techStack: [
+        { category: 'Analytics', items: ['Python', 'Feature-lift model', 'Percentile scoring'] },
+        { category: 'Ideation', items: ['Daily trend-research agents', 'Conversational chatbot', 'Trend radar'] },
+        { category: 'Visual', items: ['ffmpeg frame sampling', 'Hook / first-frame analysis'] },
+        { category: 'Output', items: ['WeasyPrint PDF', 'Interactive report', 'Sortable tables'] },
+      ],
+    },
+  },
+  {
     slug: 'podster',
     title: 'Podster',
     client: 'Production AI podcast tooling',

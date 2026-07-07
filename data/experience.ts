@@ -15,14 +15,19 @@ export type Experience = {
 /** Real resume entries, newest first. */
 export const EXPERIENCE: Experience[] = [
   {
-    role: 'Incoming Intern',
+    role: 'Intern',
     org: 'Apollo Private Wealth',
     location: 'London, UK',
     dates: 'Jun–Jul 2026',
     sort: '2026-06',
     tag: 'Wealth Management',
-    summary: 'Multi-family private wealth management firm.',
-    bullets: ['Incoming summer intern at a multi-family private wealth management firm.'],
+    summary: 'Multi-family private wealth management practice serving high-net-worth clients.',
+    bullets: [
+      'Summer intern at a multi-family private wealth practice advising high-net-worth families.',
+      "Built a reporting-automation system that composes the practice's client strategy proposals and post-meeting review decks straight from client documents — a pre-meeting plan before the conversation and an annual-review pack after — formatted to the firm's house template.",
+      'Supported advisers across the client lifecycle: preparing meeting materials, running investment and market research, and turning client documents into client-ready analysis.',
+      'Contributed to portfolio review and client-reporting workflows, helping the practice deliver a more consistent, higher-quality client experience.',
+    ],
   },
   {
     role: 'Intern',
@@ -34,8 +39,11 @@ export const EXPERIENCE: Experience[] = [
     summary: 'Investment firm — structured products & portfolio analytics.',
     datesOnExpand: true,
     bullets: [
-      'Build structured-product & portfolio analytics tooling for the firm — tracking positions and surfacing the derived metrics advisors rely on.',
-      'Validate every derived metric against the source term sheets so the numbers are provably right before they reach an advisor.',
+      "Attended 5 of the firm's strategy sessions — held each quarter and half-year to set business-development direction — and sat in on live client calls across the investment team.",
+      "Built a structured-product tracker delivered to the firm's clients: tracks positions and surfaces the derived metrics advisors rely on, with every field and metric validated against the source term sheets so the numbers are provably right before they reach a client.",
+      'Ran extensive equity research on the AI build-out — identifying companies and complementary industries positioned to benefit as the AI and technology cycle runs hot.',
+      'Researched defensive, substitute industries that outperform when the tech/AI sector sells off — building a hedge against the sector’s volatility for client portfolios.',
+      'Supported portfolio construction, investment-thesis work, and client-ready reporting across a fast-moving market backdrop.',
     ],
   },
   {
