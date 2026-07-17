@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { projects } from '@/data/projects';
 import { ProjectCard } from '@/components/ProjectCard';
 import { ExperienceCard } from '@/components/ExperienceCard';
+import { CalendlyInline } from '@/components/CalendlyInline';
 import { EXPERIENCE } from '@/data/experience';
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -297,9 +298,12 @@ export function Sections() {
             Have a workflow that should be <span className="text-gradient">automated?</span>
           </h2>
           <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-ink-600">
-            Grab a 30-minute slot and let’s talk through it, or reach me directly. The first call is
-            mostly me asking the right questions until we both see the same thing.
+            Grab a 30-minute slot right here and let’s talk through it, or reach me directly. The
+            first call is mostly me asking the right questions until we both see the same thing.
           </p>
+
+          {/* Inline Calendly booking — book a slot on the page, no redirect */}
+          <CalendlyInline />
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
