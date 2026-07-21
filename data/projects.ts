@@ -36,7 +36,7 @@ const projectsRaw: Project[] = [
       'Gives a client their own private, always-on AI chief-of-staff plus a live command-centre dashboard — it answers emails, books and arranges things, and keeps them on top of every business they run, all on infrastructure they own.',
     detail:
       'A productized personal AI operations partner. It works like a human executive assistant — drafting and answering emails, booking meetings and travel, chasing follow-ups, and delivering a daily brief — backed by a Mission Control dashboard that gives one view across everything the client owns or runs. For each client I build bespoke tools tailored to the specific parts of their life and business, seed the agent from their own documents, deploy it to their own server and Claude subscription, and hand it over built to run itself.',
-    tags: ['Next.js', 'Claude API', 'Multi-agent', 'Custom tooling', 'VPS deployment', 'Client handoff'],
+    tags: ['Next.js', 'Claude API', 'Multi-agent', 'MCP', 'Custom tooling', 'VPS deployment', 'Client handoff'],
     placeholder: 'from-emerald-200/50 via-sky-200/40 to-indigo-200/50',
     longForm: {
       overview:
@@ -194,7 +194,7 @@ const projectsRaw: Project[] = [
       'A live dashboard and 24/7 agent ("Bob") that runs my calendar, networking pipeline, and morning briefings end-to-end.',
     detail:
       'The dashboard surfaces tasks, drafts, and outstanding decisions. Bob runs on cron, takes initiative on idle nights (research, summaries), and routes everything through Discord. Screenshots blurred — it has my actual data in it.',
-    tags: ['Next.js', 'Claude API', 'Discord bots', 'Cron', 'Multi-agent'],
+    tags: ['Next.js', 'Claude API', 'Discord bots', 'MCP', 'Cron', 'Multi-agent'],
     placeholder: 'from-emerald-200/50 via-teal-200/40 to-sky-200/50',
     screenshots: [
       { src: '/screenshots/multi-automation-stack.png', alt: 'Discord channel-per-agent architecture', caption: 'Each Discord channel = a specialized agent. One channel runs the WhatsApp broker bot, one ghost-writes the monthly newsletter, one delivers the 4:15pm ET market close brief, one handles WM recruiting. All orchestrated from a single VPS via webhooks + cron + PM2 — each agent with its own memory, prompts, and execution context.' },
@@ -244,7 +244,7 @@ const projectsRaw: Project[] = [
       'Modular Python stack — morning email routine, executor cron, Discord-driven workflows. Drop-in for solo founders.',
     detail:
       'Workflow-per-channel routing, an executor that picks up tasks from a queue and runs them with full context, retry/checkpoint semantics, and a tick loop that schedules itself. Designed so a non-engineer can read what it did and why.',
-    tags: ['Python', 'Claude API', 'Discord', 'Automation'],
+    tags: ['Python', 'Claude API', 'Discord', 'MCP', 'Automation'],
     placeholder: 'from-violet-200/50 via-fuchsia-200/40 to-pink-200/50',
     longForm: {
       overview:
@@ -288,16 +288,16 @@ const projectsRaw: Project[] = [
     date: '2026-06-05',
     status: 'ongoing',
     summary:
-      'A live horizon-scanning engine that automatically catches every new and amended regulation the moment it is published — across 25+ GCC supervisors, central banks, exchanges, and global standards bodies — and classifies what actually matters.',
+      'A live horizon-scanning engine that automatically catches every new and amended regulation the moment it is published — across 280+ financial supervisors, central banks, FIUs, and global standards bodies spanning essentially every relevant jurisdiction on earth — and classifies what actually matters for a compliance team.',
     detail:
-      'A horizon-scanning system that compiles and monitors financial regulations from dozens of official sources across the Gulf and global hub cities. Every feed is live-verified; bot-protected sources are reached with a headless-browser fetch pipeline instead of brittle RSS.',
+      'A horizon-scanning system that monitors financial regulation from 240+ live connectors covering 280+ official bodies worldwide — supervisors, central banks, securities and insurance regulators, financial-intelligence units, and standards bodies. Every feed is live-verified; bot-protected and geo-blocked sources are reached with a headless-browser + reader-proxy fetch pipeline instead of brittle RSS, and non-English items are auto-translated before classification.',
     tags: ['Python', 'Playwright', 'Web scraping', 'APIs', 'Next.js'],
     placeholder: 'from-sky-200/50 via-indigo-200/40 to-slate-200/50',
     longForm: {
       overview:
-        'A regulatory-change monitoring platform for a GCC fintech. The brief: give a compliance team a single, trustworthy view of new and amended financial regulations across the Gulf plus a dozen international hub cities — pulling from supervisors, financial-intelligence units, ministries, exchanges, and official law platforms.',
+        'A regulatory-change monitoring platform for a GCC fintech that grew into worldwide coverage. The brief: give a compliance team a single, trustworthy view of new and amended financial regulation — starting in the Gulf and expanding, in prioritized waves, to essentially every relevant jurisdiction on earth: supervisors, central banks, securities and insurance regulators, financial-intelligence units, ministries, exchanges, and official standards bodies.',
       architecture:
-        'A verification-first ingestion pipeline. Each regulator source is mapped to a live-verified feed — API, SPARQL endpoint, or document page — and classified by how it can be harvested. Where RSS exists and works, it is used; where sources sit behind bot protection (the common case in this region), a Playwright headless-browser fetch bypasses the 403s. A proof-of-concept auto-generated 184 in-force laws from one jurisdiction’s public legal API directly into the client’s sheet format.',
+        'A verification-first ingestion pipeline behind a single shared connector registry. Each of 240+ regulator connectors is mapped to a live-verified source and classified by how it can be harvested: real RSS/JSON APIs where they exist, a domain-scoped news feed where a regulator publishes only on its own (often un-indexed) site, a Playwright headless-browser fetch where sources sit behind bot protection, and — for sites that geo-block the server outright — a reader-proxy that fetches from an allowed IP. Non-English items (Arabic, Chinese, Spanish, French, Turkish, Thai, and more) are auto-translated before an LLM classifies each item by sector, type, and materiality. A read-only coverage audit continuously flags any connector that breaks, collapses, or goes silent — so a broken feed is caught, not discovered later.',
       decisions: [
         {
           title: 'Live-verify every single source link',
@@ -316,14 +316,16 @@ const projectsRaw: Project[] = [
         },
       ],
       metrics: [
-        { label: 'Regulator sources mapped', value: '100+' },
-        { label: 'Jurisdictions', value: '13+' },
-        { label: 'PoC laws auto-generated', value: '184' },
+        { label: 'Live connectors', value: '240+' },
+        { label: 'Regulatory bodies', value: '280+' },
+        { label: 'Jurisdictions', value: 'Global' },
+        { label: 'Items monitored', value: '4,600+' },
       ],
       techStack: [
-        { category: 'Ingestion', items: ['Python', 'Playwright', 'REST + SPARQL'] },
-        { category: 'Verification', items: ['Live link checks', 'Source classification'] },
-        { category: 'Surface', items: ['Next.js', 'Google Sheets export', 'CSV'] },
+        { category: 'Ingestion', items: ['Node.js', 'Playwright', 'RSS / JSON APIs', 'Reader-proxy fetch'] },
+        { category: 'Intelligence', items: ['LLM classification', 'Auto-translation', 'Materiality triage'] },
+        { category: 'Reliability', items: ['Coverage audit', 'Live link checks', 'Health monitor'] },
+        { category: 'Surface', items: ['Next.js', 'Google Sheets export', 'Email alerts'] },
       ],
     },
   },
@@ -366,6 +368,54 @@ const projectsRaw: Project[] = [
         { category: 'Generation', items: ['Python', 'python-pptx', 'Claude API'] },
         { category: 'Inputs', items: ['Document parsing', 'Template binding'] },
         { category: 'Output', items: ['PPTX', 'Chart-as-image rendering'] },
+      ],
+    },
+  },
+  {
+    slug: 'navisafe-accounting',
+    title: 'Accounting Data-Entry Automation',
+    client: 'AI bookkeeping automation for a UAE engineering firm',
+    year: '2026',
+    date: '2026-07-13',
+    status: 'ongoing',
+    summary:
+      'Turns a shoebox of bills, invoices, and bank statements into ready-to-post accounting entries — a photo of a document becomes a classified, extracted, supplier-matched entry that lands straight in the firm’s Tally books, cutting hours of daily manual keying.',
+    detail:
+      'An accountant was hand-typing every bill, invoice, and bank line into Tally — 3–4 hours a day. This reads a photo or scan of each document with AI vision, classifies it, extracts the fields, matches the supplier against the existing ledger, and produces a Tally-ready import — turning manual data entry into a review-and-approve step.',
+    tags: ['Python', 'Claude vision', 'Document extraction', 'Tally ERP', 'OCR', 'Workflow automation'],
+    placeholder: 'from-amber-200/50 via-orange-200/40 to-rose-200/50',
+    longForm: {
+      overview:
+        'A bookkeeping-automation build for a UAE engineering company whose accountant spent 3–4 hours every day manually entering bills, supplier invoices, and bank-statement lines into Tally. The system takes the document a human would type from — a photo, scan, or PDF — and does the reading, classifying, and structuring itself, handing the accountant a ready-to-post entry to approve instead of a blank form to fill.',
+      architecture:
+        'A photo-to-ledger pipeline. Each document is captured and routed through a classify step (is this a purchase bill, a sales invoice, a bank statement?), then an AI-vision extraction stage reads the fields off the image — dates, amounts, tax, line items, counterparty. Extracted suppliers are matched against the firm’s existing chart of accounts / ledger so entries post to the right account instead of creating duplicates, and the result is emitted as a Tally-ready import (XML / Excel) that drops into their existing books. The accountant reviews and approves rather than types.',
+      decisions: [
+        {
+          title: 'Confirm the ledger structure before writing a line of code',
+          body:
+            'Posting to the wrong account is worse than not posting at all. The chart of accounts and the cash / petty-cash / accounts-payable structure are pinned against the firm’s actual Tally setup up front, so every generated entry maps to a real, correct account.',
+        },
+        {
+          title: 'AI vision over brittle OCR templates',
+          body:
+            'Bills arrive in dozens of layouts, languages, and photo qualities. Rather than a rigid template per vendor, vision-based extraction reads each document the way a person would — so a new supplier’s invoice doesn’t need a new template to be handled.',
+        },
+        {
+          title: 'Review-and-approve, never silent auto-post',
+          body:
+            'The system drafts the entry; the accountant approves it. It removes the typing, not the accountability — the human still signs off on every posting before it hits the books.',
+        },
+      ],
+      metrics: [
+        { label: 'Manual entry today', value: '3–4 hrs/day' },
+        { label: 'Input', value: 'Photo / scan / PDF' },
+        { label: 'Output', value: 'Tally-ready import' },
+        { label: 'Human role', value: 'Review + approve' },
+      ],
+      techStack: [
+        { category: 'Extraction', items: ['Claude vision', 'Document classification', 'Field parsing'] },
+        { category: 'Matching', items: ['Supplier / ledger matching', 'Chart-of-accounts mapping'] },
+        { category: 'Output', items: ['Tally XML / Excel import', 'Review workflow'] },
       ],
     },
   },
